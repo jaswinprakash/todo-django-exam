@@ -74,6 +74,11 @@ section.container section.form_container div.bottom div.submit_container {
     padding: 0 20px;
     text-align: center;
 }
+section.container section.form_container div.bottom div.submit_container p.error-message{
+    color: red;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
 section.container
     section.form_container
     div.bottom
@@ -82,8 +87,9 @@ section.container
         padding: 10px 20px;
         margin-right: 50px;
         border-radius: 6px;
+        font-weight: 500;
 
 }
 section.container section.form_container div.bottom div.submit_container a {
-
+    font-weight: 500;
 }

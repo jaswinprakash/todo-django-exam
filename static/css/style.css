@@ -74,10 +74,14 @@ header div.right a:hover{
     background-color: #0d93bf;
     color: #fff;
 }
-#main{}
+#main{
+    width: 30%;
+    margin: 0 auto;
+    padding-top: 50px;
+}
 #main h2{}
 #main form{
-    
+
 }
 #main form label{
     font-weight: 500;
