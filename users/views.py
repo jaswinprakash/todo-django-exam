@@ -41,8 +41,17 @@ def signup(request):
             instance = form.save(commit=False)
 
             User.objects.create_user(
-                
+                username=instance.username,
+                password=instance.password,
+                email=instance.email,
+                first_name=instance.first_name,
+                last_name=instance.last_name,
             )
+
+            user = authenticate(request, username=instance.username, password=instance.password)
+            auth_login(request,user)
+
+            return HttpResponseRedirect(reverse("web:index"))
     else:
         form = UserForm()
         context = {

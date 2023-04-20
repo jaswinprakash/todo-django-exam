@@ -3,7 +3,6 @@
     padding: 0;
     border: 0;
     vertical-align: baseline;
-    background: transparent;
     font-weight: normal;
     text-decoration: none;
     outline: none;
@@ -38,6 +37,9 @@ ul {
     font-weight: normal;
     font-style: normal;
     font-display: swap;
+}
+body{
+    background: linear-gradient(90deg, rgba(4,181,75,1) 0%, rgba(0,255,183,1) 49%, rgba(1,218,223,1) 100%);
 }
 header {
     padding: 0 20px;

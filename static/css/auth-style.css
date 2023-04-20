@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    font-family: 'Poppins';
+    font-family: "Poppins";
 }
 .wrapper {
     max-width: 1280px;
@@ -11,29 +11,36 @@
     margin: 0 auto;
 }
 @font-face {
-    font-family: 'Poppins';
-    src: url('../fonts/Poppins-Bold.woff2') format('woff2');
+    font-family: "Poppins";
+    src: url("../fonts/Poppins-Bold.woff2") format("woff2");
     font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Poppins';
-    src: url('../fonts/Poppins-Medium.woff2') format('woff2');
+    font-family: "Poppins";
+    src: url("../fonts/Poppins-Medium.woff2") format("woff2");
     font-weight: 500;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Poppins';
-    src: url('../fonts/Poppins-Regular.woff2') format('woff2');
+    font-family: "Poppins";
+    src: url("../fonts/Poppins-Regular.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
-
+body {
+    background: linear-gradient(
+        90deg,
+        rgba(4, 181, 75, 1) 0%,
+        rgba(0, 255, 183, 1) 49%,
+        rgba(1, 218, 223, 1) 100%
+    );
+}
 section.container {
     height: 100vh;
 }
@@ -74,7 +81,11 @@ section.container section.form_container div.bottom div.submit_container {
     padding: 0 20px;
     text-align: center;
 }
-section.container section.form_container div.bottom div.submit_container p.error-message{
+section.container
+    section.form_container
+    div.bottom
+    div.submit_container
+    p.error-message {
     color: red;
     margin-bottom: 10px;
     font-weight: bold;
@@ -84,12 +95,20 @@ section.container
     div.bottom
     div.submit_container
     button {
-        padding: 10px 20px;
-        margin-right: 50px;
-        border-radius: 6px;
-        font-weight: 500;
-
+    padding: 10px 20px;
+    margin-right: 50px;
+    border-radius: 6px;
+    font-weight: 500;
 }
 section.container section.form_container div.bottom div.submit_container a {
     font-weight: 500;
+}
+section.container
+    section.form_container
+    div.bottom
+    div.submit_container
+    button:hover {
+    background-color: #0d93bf;
+    color: #fff;
+    cursor: pointer;
 }
