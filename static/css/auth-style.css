@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+.wrapper {
+    max-width: 1280px;
+    width: 90%;
+    margin: 0 auto;
+}
+section.container {
+    height: 100vh;
+}
+section.container section.form_container {
+    border: 2px solid #000;
+    border-radius: 10px;
+    width: 30%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+section.container section.form_container div.top {
+}
+section.container section.form_container div.top h5 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+section.container section.form_container div.bottom {
+}
+section.container section.form_container div.bottom div.input_container {
+    width: 100%;
+    display: flex;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+section.container section.form_container div.bottom div.input_container label {
+    width: 30%;
+    display: block;
+}
+section.container section.form_container div.bottom div.input_container input {
+    width: 70%;
+    display: block;
+    padding: 10px 0;
+    border-radius: 6px;
+}
+section.container section.form_container div.bottom div.submit_container {
+    padding: 0 20px;
+    text-align: center;
+}
+section.container
+    section.form_container
+    div.bottom
+    div.submit_container
+    button {
+        padding: 10px 20px;
+        margin-right: 50px;
+        border-radius: 6px;
+
+}
+section.container section.form_container div.bottom div.submit_container a {
+
+}
