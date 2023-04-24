@@ -52,6 +52,15 @@ def signup(request):
             auth_login(request,user)
 
             return HttpResponseRedirect(reverse("web:index"))
+        else:
+            form = UserForm()
+            context = {
+                    "title": "Sign Up",
+                    "error": True,
+                    "message": "Form Error",
+                    "form": form,
+                }
+            return render(request, "users/signup.html", context=context)
     else:
         form = UserForm()
         context = {

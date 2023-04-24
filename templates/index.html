@@ -16,7 +16,7 @@
             sizes="32x32"
             href="{% static 'images/favicon.png' %}"
         />
-        <title>ToDo</title>
+        <title>{{title}}</title>
     </head>
     <body>
         <header>
@@ -25,21 +25,40 @@
             </div>
             <div class="right">
                 {% if request.user.is_authenticated%}
-                <span>{{request.user.first_name}} {{request.user.last_name}}</span>
+                <span
+                    >{{request.user.first_name}}
+                    {{request.user.last_name}}</span
+                >
                 <a href="{% url 'users:logout' %}">Logout</a>
-			    {% else %}
-			    <a href="{% url 'users:login' %}">Login</a>
-			    {% endif %}
+                {% else %}
+                <a href="{% url 'users:login' %}">Login</a>
+                {% endif %}
             </div>
         </header>
         <section id="main">
             <h2>ToDo For Students</h2>
             <form id="create-task" action="" method="post">
                 {% csrf_token %}
-                <label for="id_task">Enter Task</label>
-
-			    <input type="submit" id="task-submit" value="Add Task" />
+                <div class="input_container">
+                    <label for="{{form.add_task.id_for_label}}"
+                        >Enter Task</label
+                    >
+                    {{form.add_task}}
+                </div>
+                <div class="submit_container">
+                    <input type="submit" id="task-submit" value="Add Task" />
+                </div>
             </form>
+        </section>
+        <section class="list">
+            <div class="tasks">
+                <h2>Task List</h2>
+                <ul>
+                    <li>List 1</li>
+                    <li>List 2</li>
+                    <li>List 3</li>
+                </ul>
+            </div>
         </section>
     </body>
 </html>

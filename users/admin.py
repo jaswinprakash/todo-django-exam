@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from users.models import ToDo
+
+
+class AdminToDo(admin.ModelAdmin):
+    list_display = ["id", "add_task"]
+
+admin.site.register(ToDo,AdminToDo)

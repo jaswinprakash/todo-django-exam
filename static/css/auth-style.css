@@ -102,6 +102,7 @@ section.container
     margin-right: 50px;
     border-radius: 6px;
     font-weight: 500;
+    transition: 0.3s;
 }
 section.container section.form_container div.bottom div.submit_container a {
     font-weight: 500;
