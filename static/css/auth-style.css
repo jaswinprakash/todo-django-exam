@@ -43,6 +43,9 @@ body {
 }
 section.container {
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 section.container section.form_container {
     border: 2px solid #000;
