@@ -9,6 +9,10 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ["first_name", "last_name", "email", "username", "password"]
 
+        widgets = {
+            "password": forms.widgets.PasswordInput()
+        }
+
 
 class ToDoTask(forms.ModelForm):
     class Meta:

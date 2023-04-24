@@ -115,6 +115,7 @@ header div.right a:hover {
     display: inline;
     transition: 0.3s;
     cursor: pointer;
+    background: transparent;
 }
 #main form div.submit_container input:hover {
     color: #fff;
@@ -125,21 +126,76 @@ header div.right a:hover {
     width: 500px;
     border: 1px solid #000;
     border-radius: 5px;
+    background: lightgreen;
 }
 section.list {
-    width: 50%;
-    margin: 0 auto;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 90%;
 }
 section.list div.tasks {
+    width: 40%;
 }
 section.list div.tasks h2 {
     font-weight: 500;
     margin-bottom: 15px;
+    margin-left: 10px;
 }
 section.list div.tasks ul {
+    
 }
 section.list div.tasks li {
-    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #000;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+section.list div.tasks li div.left{
+}
+section.list div.tasks li div.left h3{
+    font-size: 20px;
+    margin-left: 10px;
+}
+section.list div.tasks li div.right{
+    
+}
+section.list div.tasks li div.right a{
+    font-weight: 500;
+    margin-right: 10px;
+}
+section.list div.completed {
+    width: 40%;
+}
+section.list div.completed h2 {
+    font-weight: 500;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+section.list div.completed ul {
+    
+}
+section.list div.completed li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #000;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+section.list div.completed li div.left{
+}
+section.list div.completed li div.left h3{
+    font-size: 20px;
+    margin-left: 10px;
+}
+section.list div.completed li div.right{
+    
+}
+section.list div.completed li div.right a{
+    font-weight: 500;
+    margin-right: 10px;
 }
