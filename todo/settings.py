@@ -18,6 +18,7 @@ INSTALLED_APPS = [
 
     'web',
     'users',
+    'tasks',
 ]
 
 MIDDLEWARE = [

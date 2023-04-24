@@ -55,7 +55,7 @@ def signup(request):
             return HttpResponseRedirect(reverse("web:index"))
         else:
             message = generate_form_errors(form)
-            
+
             form = UserForm()
             context = {
                     "title": "Sign Up",

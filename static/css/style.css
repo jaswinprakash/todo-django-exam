@@ -85,7 +85,7 @@ header div.right a:hover {
 #main {
     width: 40%;
     margin: 0 auto;
-    padding-top: 50px;
+    /* padding-top: 50px; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -129,14 +129,14 @@ header div.right a:hover {
     background: lightgreen;
 }
 section.list {
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; */
     margin: 0 auto;
-    width: 90%;
+    width: 50%;
 }
 section.list div.tasks {
-    width: 40%;
+    /* width: 40%; */
 }
 section.list div.tasks h2 {
     font-weight: 500;
@@ -168,7 +168,7 @@ section.list div.tasks li div.right a{
     margin-right: 10px;
 }
 section.list div.completed {
-    width: 40%;
+    /* width: 40%; */
 }
 section.list div.completed h2 {
     font-weight: 500;

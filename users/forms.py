@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from users.models import ToDo
+from tasks.models import ToDo
 
 
 class UserForm(forms.ModelForm):
