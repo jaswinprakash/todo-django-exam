@@ -21,7 +21,13 @@
     <body>
         <header>
             <div class="left">
-                <h1><img src="{% static 'images/logo.png' %}" alt="logo" /></h1>
+                <a href="{% url 'web:index' %}"
+                    ><h1>
+                        <img
+                            src="{% static 'images/logo.png' %}"
+                            alt="logo"
+                        /></h1
+                ></a>
             </div>
             <div class="right">
                 {% if request.user.is_authenticated%}
@@ -37,7 +43,11 @@
         </header>
         <section id="main">
             <h2>ToDo For Students</h2>
-            <form id="create-task" action="" method="post">
+            <form
+                id="create-task"
+                action="{% url 'users:create_task' %}"
+                method="post"
+            >
                 {% csrf_token %}
                 <div class="input_container">
                     <label for="{{form.add_task.id_for_label}}"
@@ -51,70 +61,39 @@
             </form>
         </section>
         <section class="list">
-            <div class="tasks">
-                <h2>Task List</h2>
-                <ul>
-                    <li>
-                        <div class="left">
-                            <h3>Task 1</h3>
-                        </div>
-                        <div class="right">
-                            <a href="">EDIT</a>
-                            <a href="">DELETE</a>
-                            <a href="">FINISHED</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="left">
-                            <h3>Task 1</h3>
-                        </div>
-                        <div class="right">
-                            <a href="">EDIT</a>
-                            <a href="">DELETE</a>
-                            <a href="">FINISHED</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="left">
-                            <h3>Task 1</h3>
-                        </div>
-                        <div class="right">
-                            <a href="">EDIT</a>
-                            <a href="">DELETE</a>
-                            <a href="">FINISHED</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="completed">
-                <h2>Completed Task</h2>
-                <ul>
-                    <li>
-                        <div class="left">
-                            <h3>Task 1</h3>
-                        </div>
-                        <div class="right">
-                            <a href="">DELETE</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="left">
-                            <h3>Task 1</h3>
-                        </div>
-                        <div class="right">
-                            <a href="">DELETE</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="left">
-                            <h3>Task 1</h3>
-                        </div>
-                        <div class="right">
-                            <a href="">DELETE</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            {% if instances %}
+                <div class="tasks">
+                    <h2>Task List</h2>
+                    {% for instance in instances %}
+                    <ul>
+                        <li>
+                            <div class="left">
+                                <h3>{{instance.add_task}}</h3>
+                            </div>
+                            <div class="right">
+                                <a href="">EDIT</a>
+                                <a href="">DELETE</a>
+                                <a href="">FINISHED</a>
+                            </div>
+                        </li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            {% endif %}
+                <div class="completed">
+                    <h2>Completed Task</h2>
+                    <ul>
+                        <li>
+                            <div class="left">
+                                <h3>Task 1</h3>
+                            </div>
+                            <div class="right">
+                                <a href="">DELETE</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            
         </section>
     </body>
 </html>

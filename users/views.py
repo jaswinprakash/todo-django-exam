@@ -2,8 +2,9 @@ from django.shortcuts import render, reverse
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.http.response import HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
-from users.forms import UserForm
+from users.forms import UserForm, ToDoTask
 from main.functions import generate_form_errors
 
 
@@ -18,13 +19,20 @@ def login(request):
                 auth_login(request,user)
 
                 return HttpResponseRedirect("/")
+            else:
+                context = {
+                        "title": "Login",
+                        "error": True,
+                        "message": "Invalid username or password"
+                    }
+                return render(request, "users/login.html", context=context)
         else:
-            context = {
-                    "title": "Login",
-                    "error": True,
-                    "message": "Invalid username or password"
-                }
-            return render(request, "users/login.html", context=context)
+                context = {
+                        "title": "Login",
+                        "error": True,
+                        "message": "Invalid username or password"
+                    }
+                return render(request, "users/login.html", context=context)
     else:
         context = {
             "title" : "Student Login"
@@ -71,3 +79,15 @@ def signup(request):
             "form" : form,
         }
         return render(request, "users/signup.html", context=context)
+    
+
+@login_required
+def create_task(request):
+    if request.method == "POST":
+        form = ToDoTask(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.username = request.user
+            instance.save()
+
+            return HttpResponseRedirect(reverse('web:index'))
