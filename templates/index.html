@@ -17,6 +17,9 @@
             href="{% static 'images/favicon.png' %}"
         />
         <title>{{title}}</title>
+        <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="{% static 'js/script.js' %}"></script>
     </head>
     <body>
         <header>
@@ -47,6 +50,7 @@
                 id="create-task"
                 action="{% url 'users:create_task' %}"
                 method="post"
+                class="ajax redirect"
             >
                 {% csrf_token %}
                 <div class="input_container">
@@ -72,7 +76,13 @@
                             </div>
                             <div class="right">
                                 <a href="{% url 'users:edit_task' id=instance.id %}">EDIT</a>
-                                <a href="{% url 'users:delete_task' id=instance.id %}">DELETE</a>
+                                <a 
+                                    href="{% url 'users:delete_task' id=instance.id %}"
+                                    class="danger action-button reload"
+                                    data-text="Are you sure want to remove this ToDo. You can't undo this action." 
+                                    data-title="Confirm Delete!"
+                                    title="Delete!"
+                                >DELETE</a>
                                 <a href="{% url 'users:finish_task' id=instance.id %}">FINISHED</a>
                             </div>
                         </li>
@@ -90,7 +100,13 @@
                                 <h3>{{instance.add_task}}</h3>
                             </div>
                             <div class="right">
-                                <a href="{% url 'users:delete_task' id=instance.id %}">DELETE</a>
+                                <a 
+                                    href="{% url 'users:delete_task' id=instance.id %}"
+                                    class="danger action-button reload"
+                                    data-text="Are you sure want to remove this post. You can't undo this action." 
+                                    data-title="Confirm Delete!"
+                                    title="Delete!"
+                                >DELETE</a>
                             </div>
                         </li>
                     </ul>

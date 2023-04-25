@@ -1,6 +1,9 @@
+import json
+
 from django.shortcuts import render, reverse, get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.http.response import HttpResponseRedirect
+from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
@@ -91,17 +94,24 @@ def create_task(request):
             instance.username = request.user
             instance.save()
 
-            return HttpResponseRedirect(reverse('web:index'))
-    else:
-         form = ToDoTask()
-         instances = ToDo.objects.filter(is_deleted=False)    
-         context = {
-                "title" : "Home Page",
-                "instances": instances,
-                "message" : generate_form_errors(form),
-                "form":form
+            response_data = {
+                "title": "Successfully submitted",
+                "message": "Task Added successfully",
+                "status": "success",
+                "redirect": "yes",
+                "redirect_url": "/",
             }
-         return render(request, 'web:index', context=context)
+            return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+        else:
+            error_message = generate_form_errors(form)
+            response_data = {
+                "title": "form validation error",
+                "message": str(error_message),
+                "status": "error",
+                "stable": "yes"
+            }
+            return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 
 @login_required
@@ -126,7 +136,13 @@ def delete_task(request,id):
     instance.is_deleted=True
     instance.delete()
 
-    return HttpResponseRedirect(reverse('web:index'))
+    response_data = {
+        "title": "Successfully deleted",
+        "message": "Task deleted successfully",
+        "status": "success",
+    }
+
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 
 @login_required
