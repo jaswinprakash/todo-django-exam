@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.http.response import HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -105,15 +105,34 @@ def create_task(request):
 
 
 @login_required
-def edit_task(request):
-    pass
+def edit_task(request,id):
+    instance = get_object_or_404(ToDo, id=id)
+    if request.method == 'POST':
+        form = ToDoTask(request.POST, instance=instance)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+    else:
+        form = ToDoTask(instance=instance)
+        context={
+            "form":form
+        }
+        return render(request, "web:index", context=context)
 
 
 @login_required
-def delete_task(request):
-    pass
+def delete_task(request,id):
+    instance = get_object_or_404(ToDo, id=id)
+    instance.is_deleted=True
+    instance.delete()
+
+    return HttpResponseRedirect(reverse('web:index'))
 
 
 @login_required
-def finish_task(request):
-    pass
+def finish_task(request,id):
+    instance = get_object_or_404(ToDo, id=id)
+    instance.is_completed=True
+    instance.save()
+
+    return HttpResponseRedirect(reverse('web:index'))
