@@ -1,6 +1,6 @@
 import json
 
-from django.shortcuts import render, reverse, get_object_or_404
+from django.shortcuts import render, reverse, get_object_or_404, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.http.response import HttpResponseRedirect
 from django.http import HttpResponse
@@ -121,7 +121,11 @@ def edit_task(request,id):
         form = ToDoTask(request.POST, instance=instance)
         if form.is_valid():
             instance = form.save(commit=False)
-            instance.save()
+            # instance.save()
+            instance.is_deleted=True
+            instance.delete()
+            
+            return render(request, "index.html", context=context)
     else:
         form = ToDoTask(instance=instance)
         username = request.user
@@ -133,27 +137,7 @@ def edit_task(request,id):
             "instances": instances,
             "completed_instances": completed_instances
         }
-        return render(request, "index.html", context=context)
-    #         response_data = {
-    #                     "title": "Successfully submitted",
-    #                     "message": "Successfully submitted",
-    #                     "status": "success",
-    #                     "redirect": "yes",
-    #                     "redirect_url": "/",
-    #                 }
-    # else:
-    #     form = ToDoTask(instance=instance)
-    #     error_message = generate_form_errors(form)
-    #     context={
-    #         "form":form
-    #     }
-    #     response_data = {
-    #         "title": "form validation error",
-    #         "message": str(error_message),
-    #         "status": "error",
-    #         "stable": "yes",
-    #     }
-    #     return HttpResponse(json.dumps(response_data), content_type="application/json")    
+        return render(request, "index.html", context=context)    
 
 
 @login_required
@@ -175,6 +159,14 @@ def delete_task(request,id):
 def finish_task(request,id):
     instance = get_object_or_404(ToDo, id=id)
     instance.is_completed=True
+    instance.save()
+
+    return HttpResponseRedirect(reverse('web:index'))
+
+@login_required
+def revise_task(request,id):
+    instance = get_object_or_404(ToDo, id=id)
+    instance.is_completed=False
     instance.save()
 
     return HttpResponseRedirect(reverse('web:index'))

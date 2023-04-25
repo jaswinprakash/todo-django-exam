@@ -93,8 +93,9 @@ header div.right a:hover {
 }
 #main h2 {
     font-weight: 800;
-    font-size: 25px;
+    font-size: 30px;
     margin-bottom: 20px;
+    font-style: italic;
 }
 #main form {
     margin-bottom: 50px;
@@ -137,11 +138,12 @@ section.list {
 }
 section.list div.tasks {
     /* width: 40%; */
+    margin-bottom: 25px;
 }
 section.list div.tasks h2 {
     font-weight: 500;
-    margin-bottom: 15px;
-    margin-left: 10px;
+    margin-bottom: 5px;
+    /* margin-left: 10px; */
 }
 section.list div.tasks ul {
     
@@ -167,13 +169,25 @@ section.list div.tasks li div.right a{
     font-weight: 500;
     margin-right: 10px;
 }
+section.list div.tasks li div.right a:hover{
+    opacity: 0.4;
+}
+section.list div.tasks li div.right a.edit{
+    color: blue;
+}
+section.list div.tasks li div.right a.delete{
+    color: red;
+}
+section.list div.tasks li div.right a.complete{
+    color: green;
+}
 section.list div.completed {
     /* width: 40%; */
 }
 section.list div.completed h2 {
     font-weight: 500;
-    margin-bottom: 15px;
-    margin-left: 10px;
+    margin-bottom: 5px;
+    /* margin-left: 10px; */
 }
 section.list div.completed ul {
     
@@ -198,4 +212,11 @@ section.list div.completed li div.right{
 section.list div.completed li div.right a{
     font-weight: 500;
     margin-right: 10px;
+    color: red;
+}
+section.list div.completed li div.right a.revise{
+    color: yellow;
+}
+section.list div.completed li div.right a:hover{
+    opacity: 0.4;
 }
