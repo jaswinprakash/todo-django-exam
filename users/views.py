@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 from users.forms import UserForm, ToDoTask
+from tasks.models import ToDo
 from main.functions import generate_form_errors
 
 
@@ -91,3 +92,28 @@ def create_task(request):
             instance.save()
 
             return HttpResponseRedirect(reverse('web:index'))
+    else:
+         form = ToDoTask()
+         instances = ToDo.objects.filter(is_deleted=False)    
+         context = {
+                "title" : "Home Page",
+                "instances": instances,
+                "message" : generate_form_errors(form),
+                "form":form
+            }
+         return render(request, 'web:index', context=context)
+
+
+@login_required
+def edit_task(request):
+    pass
+
+
+@login_required
+def delete_task(request):
+    pass
+
+
+@login_required
+def finish_task(request):
+    pass

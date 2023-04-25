@@ -6,7 +6,8 @@ from tasks.models import ToDo
 
 def index(request):
     if request.user.is_authenticated:
-        instances = ToDo.objects.filter(is_deleted=False)
+        username = request.user
+        instances = ToDo.objects.filter(is_deleted=False,username=username)
         form = ToDoTask()
         context = {
             "form": form,
