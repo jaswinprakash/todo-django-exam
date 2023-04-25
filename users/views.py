@@ -124,10 +124,36 @@ def edit_task(request,id):
             instance.save()
     else:
         form = ToDoTask(instance=instance)
+        username = request.user
+        instances = ToDo.objects.filter(is_deleted=False,username=username,is_completed=False)
+        completed_instances = ToDo.objects.filter(is_deleted=False,username=username,is_completed=True)
         context={
-            "form":form
+            "title": "Edit Task",
+            "form":form,
+            "instances": instances,
+            "completed_instances": completed_instances
         }
-        return render(request, "web:index", context=context)
+        return render(request, "index.html", context=context)
+    #         response_data = {
+    #                     "title": "Successfully submitted",
+    #                     "message": "Successfully submitted",
+    #                     "status": "success",
+    #                     "redirect": "yes",
+    #                     "redirect_url": "/",
+    #                 }
+    # else:
+    #     form = ToDoTask(instance=instance)
+    #     error_message = generate_form_errors(form)
+    #     context={
+    #         "form":form
+    #     }
+    #     response_data = {
+    #         "title": "form validation error",
+    #         "message": str(error_message),
+    #         "status": "error",
+    #         "stable": "yes",
+    #     }
+    #     return HttpResponse(json.dumps(response_data), content_type="application/json")    
 
 
 @login_required

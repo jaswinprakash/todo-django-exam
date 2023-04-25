@@ -60,19 +60,19 @@
                     {{form.add_task}}
                 </div>
                 <div class="submit_container">
-                    <input type="submit" id="task-submit" value="Add Task" />
+                    <input type="submit" id="task-submit" value="Submit" />
                 </div>
             </form>
         </section>
         <section class="list">
             {% if instances %}
                 <div class="tasks">
-                    <h2>Task List</h2>
+                    <h2>Pending Tasks</h2>
                     {% for instance in instances %}
                     <ul>
                         <li>
                             <div class="left">
-                                <h3>{{instance.add_task}}</h3>
+                                <h3>{{instance.add_task|truncatechars:25}}</h3>
                             </div>
                             <div class="right">
                                 <a href="{% url 'users:edit_task' id=instance.id %}">EDIT</a>
@@ -92,12 +92,12 @@
                 {% endif %}
                 {% if completed_instances %}
                 <div class="completed">
-                    <h2>Completed Task</h2>
+                    <h2>Completed Tasks</h2>
                     {% for instance in completed_instances %}
                     <ul>
                         <li>
                             <div class="left">
-                                <h3>{{instance.add_task}}</h3>
+                                <h3>{{instance.add_task|truncatechars:25}}</h3>
                             </div>
                             <div class="right">
                                 <a 
