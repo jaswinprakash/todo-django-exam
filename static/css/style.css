@@ -168,26 +168,31 @@ section.list div.tasks li div.right{
 section.list div.tasks li div.right a{
     font-weight: 500;
     margin-right: 10px;
+    transition: 0.3s;
+    padding: 0 2px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    color: #000;
 }
 section.list div.tasks li div.right a:hover{
-    opacity: 0.4;
 }
-section.list div.tasks li div.right a.edit{
-    color: blue;
+section.list div.tasks li div.right a.edit:hover{
+    color: #fff;
+    background-color: blue;
 }
-section.list div.tasks li div.right a.delete{
-    color: red;
+section.list div.tasks li div.right a.delete:hover{
+    color: #fff;
+    background-color: red;
 }
-section.list div.tasks li div.right a.complete{
-    color: green;
+section.list div.tasks li div.right a.complete:hover{
+    color: #fff;
+    background-color: green;
 }
 section.list div.completed {
-    /* width: 40%; */
 }
 section.list div.completed h2 {
     font-weight: 500;
     margin-bottom: 5px;
-    /* margin-left: 10px; */
 }
 section.list div.completed ul {
     
@@ -212,11 +217,20 @@ section.list div.completed li div.right{
 section.list div.completed li div.right a{
     font-weight: 500;
     margin-right: 10px;
-    color: red;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 4px;
+    padding: 0 2px;
+    transition: 0.3s;
 }
-section.list div.completed li div.right a.revise{
-    color: yellow;
+section.list div.completed li div.right a.revise:hover{
+    color: #000;
+    background-color: yellow;
+}
+section.list div.completed li div.right a.delete:hover{
+    color: #fff;
+    background-color: red;
 }
 section.list div.completed li div.right a:hover{
-    opacity: 0.4;
+    transition: 0.3s;
 }

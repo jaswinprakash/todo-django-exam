@@ -117,15 +117,16 @@ def create_task(request):
 @login_required
 def edit_task(request,id):
     instance = get_object_or_404(ToDo, id=id)
+    instance.is_deleted=True
+    # instance.delete()
     if request.method == 'POST':
         form = ToDoTask(request.POST, instance=instance)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            # instance.save()
-            instance.is_deleted=True
-            instance.delete()
-            
+        if instance.username == request.user:
+            if form.is_valid():
+                form.save()
+                
             return render(request, "index.html", context=context)
+        
     else:
         form = ToDoTask(instance=instance)
         username = request.user
@@ -137,6 +138,7 @@ def edit_task(request,id):
             "instances": instances,
             "completed_instances": completed_instances
         }
+
         return render(request, "index.html", context=context)    
 
 
