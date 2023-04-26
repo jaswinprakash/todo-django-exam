@@ -4,7 +4,7 @@ from tasks.models import ToDo, Author
 
 
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ["name","user"]
+    list_display = ["user","name"]
 
 admin.site.register(Author,AuthorAdmin)
 
