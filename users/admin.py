@@ -1,12 +1,6 @@
 from django.contrib import admin
 
-from tasks.models import ToDo, Author
-
-
-class AuthorAdmin(admin.ModelAdmin):
-    list_display = ["user","name"]
-
-admin.site.register(Author,AuthorAdmin)
+from tasks.models import ToDo
 
 
 class AdminToDo(admin.ModelAdmin):

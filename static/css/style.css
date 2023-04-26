@@ -166,13 +166,14 @@ section.list div.tasks li div.right{
     
 }
 section.list div.tasks li div.right a{
-    font-weight: 500;
+    font-weight: 800;
     margin-right: 10px;
     transition: 0.3s;
     padding: 0 2px;
     border: 1px solid #000;
     border-radius: 4px;
     color: #000;
+    font-size: 15px;
 }
 section.list div.tasks li div.right a:hover{
 }
@@ -215,13 +216,14 @@ section.list div.completed li div.right{
     
 }
 section.list div.completed li div.right a{
-    font-weight: 500;
+    font-weight: 800;
     margin-right: 10px;
     color: #000;
     border: 1px solid #000;
     border-radius: 4px;
     padding: 0 2px;
     transition: 0.3s;
+    font-size: 15px;
 }
 section.list div.completed li div.right a.revise:hover{
     color: #000;

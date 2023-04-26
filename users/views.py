@@ -117,8 +117,8 @@ def create_task(request):
 @login_required
 def edit_task(request,id):
     instance = get_object_or_404(ToDo, id=id)
-    instance.is_deleted=True
-    # instance.delete()
+    # instance.is_deleted=True
+    instance.delete()
     if request.method == 'POST':
         form = ToDoTask(request.POST, instance=instance)
         if instance.username == request.user:
